@@ -26,9 +26,9 @@ public class SampleString {
     }
 
     /**
-     * Checking a string is equal with its reversed string
+     * Checking a string is equal with another string
      * @param word1 A string
-     * @param word2 reversed of `str`
+     * @param word2 Another string
      * @return `True` for being equal words, `False` for being disparate words
      */
     static boolean isEqual(String word1, String word2) {
