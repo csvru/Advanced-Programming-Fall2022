@@ -7,12 +7,13 @@ public class SampleString {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter sentence:");
         String sentence = input.nextLine();
-        int countOfSymmetric = checkSymmetricWords(sentence);
-        System.out.println(countOfSymmetric);
+        int palindromeCount = checkPalindromeWords(sentence);
+        System.out.println(palindromeCount);
     }
 
     /**
      * Reverse the word
+     *
      * @param word The word
      * @return Reverse of word
      */
@@ -32,40 +33,35 @@ public class SampleString {
      * @return `True` for being equal words, `False` for being disparate words
      */
     static boolean isEqual(String word1, String word2) {
-        /*
-        if(word1.length() != word2.length()) return false;
-        for(int i = 0; i < word1.length(); i++) {
-            if(word1.charAt(i) != word2.charAt(i)) {
-                return false;
-            }
-        }
-        return true;
-        */
-        return word1.equals(word2);
+        String word1_lowerCase = word1.toLowerCase();
+        String word2_lowerCase = word2.toLowerCase();
+        return word1_lowerCase.equals(word2_lowerCase);
     }
 
     /**
-     * Checking words for being symmetric or asymmetric
+     * Checking words for being palindrome
+     *
      * @param word The word for checking
-     * @return True for symmetric word, False for asymmetric
+     * @return 'true' for palindrome word
      */
-    static boolean isSymmetric(String word){
+    static boolean isPalindrome(String word) {
         String reversed = reverse(word);
         return isEqual(word, reversed);
     }
 
     /**
-     * Checking words in a sentence for finding symmetric words, and returning the count of symmetries.
-     * @param sentence  The sentence for checking
-     * @return Count of symmetric words in the sentence
+     * Checking words in a sentence for finding palindrome words, and returning the count of them.
+     *
+     * @param sentence The sentence for checking
+     * @return Count of palindrome words in the sentence
      */
-    static int checkSymmetricWords(String sentence) {
-        int symmetricCount = 0;
-        for(String word: sentence.split(" ")){
-            if(isSymmetric(word)){
-                symmetricCount++;
+    static int checkPalindromeWords(String sentence) {
+        int palindromeCounter = 0;
+        for (String word : sentence.split(" ")) {
+            if (isPalindrome(word)) {
+                palindromeCounter++;
             }
         }
-        return symmetricCount;
+        return palindromeCounter;
     }
 }
