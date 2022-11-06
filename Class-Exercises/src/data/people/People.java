@@ -1,13 +1,13 @@
 package data.people;
 
 import data.fake.ir.Name;
-import tools.booleans.RandomBoolean;
-import tools.numbers.RandomNumber;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class People {
     private final ArrayList<Person> list;
+    private static final Random random = new Random();
 
     public People() {
         this.list = new ArrayList<>();
@@ -15,16 +15,17 @@ public class People {
     public static People generate(int count) {
         People people = new People();
         for (int i = 1; i <= count; i++) {
+            if(random.nextInt(2) < 1) {
+                String firstName = Name.getRandomManName();
+                String lastName = Name.getRandomLastName();
+                int age = random.nextInt(90) + 1;
+                people.list.add(new Person(firstName, lastName, age, Gender.MALE));
+                continue;
+            }
             String firstName = Name.getRandomWomanName();
             String lastName = Name.getRandomLastName();
-            Gender gender = Gender.FEMALE;
-            int age = RandomNumber.integer(90) + 1;
-            if(RandomBoolean.rand()) {
-                firstName = Name.getRandomManName();
-                lastName = Name.getRandomLastName();
-                gender = Gender.MALE;
-            }
-            people.list.add(new Person(firstName, lastName, age, gender));
+            int age = random.nextInt(90) + 1;
+            people.list.add(new Person(firstName, lastName, age, Gender.FEMALE));
         }
         return people;
     }
