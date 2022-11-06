@@ -21,7 +21,6 @@ public class People {
             int age = RandomNumber.integer(90) + 1;
             if(RandomBoolean.rand()) {
                 firstName = Name.getRandomManName();
-                lastName = Name.getRandomLastName();
                 gender = Gender.MALE;
             }
             people.list.add(new Person(firstName, lastName, age, gender));
