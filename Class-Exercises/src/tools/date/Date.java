@@ -51,10 +51,6 @@ public class Date {
         return this.year % 100 != 0;
     }
 
-    public int getAllMonth() {
-        return this.year * 12 + this.month;
-    }
-
     public int getMonthDays() {
         return Date.getMonthDays(this.month, this.isLeapYear());
     }
@@ -73,16 +69,6 @@ public class Date {
 
     public int getYearDays() {
         return this.isLeapYear() ? 366 : 365;
-    }
-
-    public int getAllDays() {
-        return this.getYearDays() + this.getMonthDays() + this.day;
-    }
-
-    public static int diff(Date date1, Date date2) {
-        int date1Days = DateRange.allDays(date1);
-        int date2Days = DateRange.allDays(date2);
-        return date1Days - date2Days;
     }
 
     @Override

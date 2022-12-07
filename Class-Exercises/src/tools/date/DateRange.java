@@ -19,4 +19,10 @@ public class DateRange {
         }
         return leapYears * 366 + nonLeapYears * 365 + monthDays + date.getDay();
     }
+
+    public static int diff(Date date1, Date date2) {
+        int date1Days = DateRange.allDays(date1);
+        int date2Days = DateRange.allDays(date2);
+        return date1Days - date2Days;
+    }
 }
