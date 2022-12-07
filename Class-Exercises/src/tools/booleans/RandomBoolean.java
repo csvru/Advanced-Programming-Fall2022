@@ -1,9 +1,11 @@
 package tools.booleans;
 
-import tools.numbers.RandomNumber;
+import java.util.Random;
 
 public class RandomBoolean {
+    private static final Random random = new Random();
+
     public static boolean rand() {
-        return RandomNumber.integer(2) < 1;
+        return random.nextBoolean();
     }
 }
