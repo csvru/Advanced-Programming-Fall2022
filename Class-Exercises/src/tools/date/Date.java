@@ -78,6 +78,7 @@ public class Date {
      * @return `true` for a valid date, `false` for a invalid date.
      */
     public boolean isValid() {
+        if(this.year < 1 || this.year > 9999) return false;
         if (this.day < 1 || this.day > 31) return false;
         if (this.month < 1 || this.month > 12) return false;
         return this.getMonthDays() >= this.day;
